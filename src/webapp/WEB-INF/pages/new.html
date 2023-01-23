@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<form th:method="POST" th:action="@{/user}" th:object="${user}">
+
+    <label for="name">Enter name:</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
+    <br/>
+    <label for="surname">Enter surname:</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Error</div>
+    <br/>
+    <label for="email">Enter email:</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
+    <br/>
+    <label for="age">Enter age:</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</div>
+    <br/>
+    <label for="numberPhone">Enter numberPhone:</label>
+    <input type="text" th:field="*{numberPhone}" id="numberPhone"/>
+    <div style="color:red" th:if="${#fields.hasErrors('numberPhone')}" th:errors="*{numberPhone}">Error</div>
+    <br/>
+    <label for="passport">Enter passport:</label>
+    <input type="text" th:field="*{passport}" id="passport"/>
+    <div style="color:red" th:if="${#fields.hasErrors('passport')}" th:errors="*{passport}">Error</div>
+    <br/>
+
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>
