@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String getUserToUpdate(Model model, @PathVariable("id") int id) {
+    public String getPageToUpd (Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.showUserById(id));
         return "edit";
     }
