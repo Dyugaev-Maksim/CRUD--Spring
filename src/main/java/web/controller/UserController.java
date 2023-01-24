@@ -22,7 +22,7 @@ public class UserController {
 
 
     @GetMapping
-    public String getAllUsers(Model model) {
+    public String getAllUsersList(Model model) {
         model.addAttribute("something", "All User table");
         model.addAttribute("user", userService.getAllUsers());
         return "user";
@@ -36,12 +36,12 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String getSavingPage(@ModelAttribute("user") User user) {
         return "new";
     }
 
     @PostMapping()
-    public String createUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
+    public String saveNewUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "new";
         }
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") int id) {
+    public String getUserToUpdate(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.showUserById(id));
         return "edit";
     }
