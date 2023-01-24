@@ -7,7 +7,6 @@ import web.dao.UserDao;
 import web.model.User;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -20,21 +19,14 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User show(long id) {
-        return userDao.getUsers().stream().filter(user -> user.getId() == id).findAny().orElse(null);
+    public User showUserById(long id) {
+        return userDao.getUserById(id);
     }
 
     @Transactional
     @Override
-    public void upDate(User user) {
-        userDao.upDate(user);
-    }
-
-    @Override
-    public List<User> getCountUsers(Integer count) {
-        if (count == null)
-            count = 10;
-        return userDao.getUsers().stream().limit(count).collect(Collectors.toList());
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 
     @Transactional
@@ -44,8 +36,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public List<User> getUsers() {
-        return userDao.getUsers();
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
 
     @Transactional

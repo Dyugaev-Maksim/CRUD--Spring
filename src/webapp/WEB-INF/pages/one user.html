@@ -11,7 +11,7 @@
 <body>
 <h1 th:text="${something}"/>  <a href="/spring_mvc_war_exploded/user/new">Добавить пользователя</a> или
 <a th:href="@{/user/{id}/edit(id=${user.id})}">Изменить пользователя</a> или
-<a href="/spring_mvc_war_exploded/user/all">Показать всю таблицу</a>
+<a href="/spring_mvc_war_exploded/user">Показать всю таблицу</a>
 <br/>
 <form th:method="DELETE" th:action="@{/user/{id}(id=${user.id})}">
   <input type="submit" value="Удалить пользователя"/>

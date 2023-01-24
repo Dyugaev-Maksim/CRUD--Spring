@@ -17,7 +17,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
@@ -28,19 +28,19 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public User getUser(long id) {
+    public User getUserById(long id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void upDate(User user) {
+    public void updateUser(User user) {
         entityManager.merge(user);
         entityManager.flush();
     }
 
     @Override
     public void deleteUser(long id) {
-        User user = getUser(id);
+        User user = getUserById(id);
         if (null == user) {
             throw new NullPointerException("User not found");
         }
